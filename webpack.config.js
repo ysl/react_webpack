@@ -1,11 +1,11 @@
-// 這邊使用 HtmlWebpackPlugin，將 bundle 好得 <script> 插入到 body  
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
 const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
   template: `${__dirname}/app/index.html`,
   filename: 'index.html',
   inject: 'body',
 });
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractTextPluginConfig = new ExtractTextPlugin("[name].css");
 
 module.exports = {
   entry: [
@@ -27,7 +27,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: "style-loader!css-loader"
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader")
       }
     ]
   },
@@ -36,5 +36,8 @@ module.exports = {
     host: '0.0.0.0',
     port: 8088,
   },
-  plugins: [HTMLWebpackPluginConfig],
+  plugins: [
+    HTMLWebpackPluginConfig,
+    ExtractTextPluginConfig
+  ]
 };
