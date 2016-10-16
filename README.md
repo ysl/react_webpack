@@ -9,13 +9,17 @@ npm install --dev
 ```
 npm run dev
 ```
-Support live reload
+Open http://localhost:8088, it support live reload.
 
-##
+
+## Run in production mode
 ```
 npm run build
+cd build
+python -m SimpleHTTPServer 8088
 ```
-You can see the ouput file in `build` folder.
+Open http://localhost:8088
+
 
 ## Reference
  - http://blog.techbridge.cc/2016/07/30/react-dev-enviroment-webpack-browserify/
