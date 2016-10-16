@@ -1,13 +1,17 @@
 {
-  "name": "react_app",
+  "name": "react_webpack",
   "version": "1.0.0",
-  "description": "",
+  "description": "React + Webpack sample",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ysl/react_webpack.git"
+  },
   "main": "app/index.js",
   "scripts": {
     "dev": "webpack-dev-server --devtool eval --progress --colors --content-base build",
     "build": "webpack"
   },
-  "author": "",
+  "author": "Brian Lin",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.17.0",
