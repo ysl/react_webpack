@@ -1,16 +1,25 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
+var webpack = require('webpack');
+var CommonsChunkPluginConfig = new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js')
+var ProvidePluginConfig = new webpack.ProvidePlugin({
+  jQuery: 'jquery',
+  $: 'jquery',
+  jquery: 'jquery'
+});
+
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var ExtractTextPluginConfig = new ExtractTextPlugin("[name].css");
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
   template: `${__dirname}/app/index.html`,
   filename: 'index.html',
   inject: 'body',
 });
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const ExtractTextPluginConfig = new ExtractTextPlugin("[name].css");
 
 module.exports = {
-  entry: [
-    './app/index.js'
-  ],
+  entry: {
+    app: `${__dirname}/app/index.js`,
+    vendors: ['bootstrap', 'jquery', 'lodash', 'moment', 'q', 'react', 'react-bootstrap', 'react-dom']
+  },
   output: {
     path: `${__dirname}/build`,
     filename: 'bundle.js',
@@ -37,7 +46,9 @@ module.exports = {
     port: 8088,
   },
   plugins: [
-    HTMLWebpackPluginConfig,
-    ExtractTextPluginConfig
+    CommonsChunkPluginConfig,
+    ProvidePluginConfig,
+    ExtractTextPluginConfig,
+    HTMLWebpackPluginConfig
   ]
 };
