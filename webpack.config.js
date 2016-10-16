@@ -8,10 +8,12 @@ const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
 });
 
 module.exports = {
-  entry: './app/index.js',
+  entry: [
+    './app/index.js'
+  ],
   output: {
     path: `${__dirname}/build`,
-    filename: 'index_bundle.js',
+    filename: 'bundle.js',
   },
   module: {
     loaders: [
@@ -23,7 +25,11 @@ module.exports = {
           presets: ['react'],
         },
       },
-    ],
+      {
+        test: /\.css$/,
+        loader: "style-loader!css-loader"
+      }
+    ]
   },
   devServer: {
     inline: true,

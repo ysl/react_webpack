@@ -1,6 +1,7 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var Apple = require('./apple');
+require("./style.css");
 
 var App = React.createClass({
   render: function() {
