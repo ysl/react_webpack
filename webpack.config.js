@@ -24,7 +24,7 @@ var DefinePluginConfig = new webpack.DefinePlugin({
 
 module.exports = {
   entry: {
-    app: `${__dirname}/app/index.js`,
+    app: `${__dirname}/app/app.jsx`,
     vendors: ['bootstrap', 'c3', 'jquery', 'lodash', 'moment', 'q', 'react', 'react-bootstrap', 'react-dom']
   },
   output: {
@@ -34,7 +34,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.js$/,
+        test: /\.jsx$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
@@ -54,6 +54,9 @@ module.exports = {
         loader: 'file-loader',
       }
     ]
+  },
+  resolve: {
+    extensions: ['', '.js', '.jsx'],
   },
   devServer: {
     inline: true,
