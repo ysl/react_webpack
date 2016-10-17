@@ -15,10 +15,17 @@ var HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
   inject: 'body',
 });
 
+// To hide the warning.
+var DefinePluginConfig = new webpack.DefinePlugin({
+  "process.env": {
+     NODE_ENV: JSON.stringify("production")
+  }
+});
+
 module.exports = {
   entry: {
     app: `${__dirname}/app/index.js`,
-    vendors: ['bootstrap', 'jquery', 'lodash', 'moment', 'q', 'react', 'react-bootstrap', 'react-dom']
+    vendors: ['bootstrap', 'c3', 'jquery', 'lodash', 'moment', 'q', 'react', 'react-bootstrap', 'react-dom']
   },
   output: {
     path: `${__dirname}/build`,
@@ -57,6 +64,7 @@ module.exports = {
     CommonsChunkPluginConfig,
     ProvidePluginConfig,
     ExtractTextPluginConfig,
-    HTMLWebpackPluginConfig
+    HTMLWebpackPluginConfig,
+    DefinePluginConfig
   ]
 };
