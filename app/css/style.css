@@ -1,0 +1,10 @@
+body {
+	background-color: #ccc;
+}
+
+.myDiv {
+	width: 100px;
+	height: 100px;
+	background-image: url('../img/food.jpg');
+	background-size: cover;
+}
