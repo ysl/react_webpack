@@ -12,7 +12,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
   template: `${__dirname}/app/index.html`,
   filename: 'index.html',
-  inject: 'body',
+  inject: 'body'
 });
 
 // To hide the warning.
@@ -25,11 +25,11 @@ var DefinePluginConfig = new webpack.DefinePlugin({
 module.exports = {
   entry: {
     app: `${__dirname}/app/app.jsx`,
-    vendors: ['bootstrap', 'c3', 'jquery', 'lodash', 'moment', 'q', 'react', 'react-bootstrap', 'react-dom']
+    vendors: ['bootstrap', 'c3', 'jquery', 'lodash', 'moment', 'q', 'react', 'react-bootstrap', 'react-dom', 'react-router']
   },
   output: {
     path: `${__dirname}/build`,
-    filename: 'bundle.js',
+    filename: 'bundle.js'
   },
   module: {
     loaders: [
@@ -56,12 +56,12 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['', '.js', '.jsx']
   },
   devServer: {
     inline: true,
     host: '0.0.0.0',
-    port: 8088,
+    port: 8088
   },
   plugins: [
     CommonsChunkPluginConfig,
